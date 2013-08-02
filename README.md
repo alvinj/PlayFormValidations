@@ -1,4 +1,4 @@
-# A Play Framework Form Validations Example
+## A Play Framework Form Validations Example
 
 This project contains a Play Framework form validations example.
 
