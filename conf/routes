@@ -1,0 +1,11 @@
+# Routes
+
+# home page
+GET     /                           controllers.Application.index
+
+# validation examples
+GET     /validations/add            controllers.ValidationsController.add
+POST    /validations/save           controllers.ValidationsController.save
+
+# map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.at(path="/public", file)

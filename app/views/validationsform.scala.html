@@ -1,0 +1,42 @@
+@(validationsForm: Form[Validations])
+
+@import helper._ 
+@import helper.twitterBootstrap._ 
+
+@main("Sample Form Validations") {
+
+  @* this block of code will display form-level errors *@
+  @if(validationsForm.hasErrors) {
+    <div class="alert-message">
+      <p>There were one or more errors with the form:</p>
+      <ul>
+        @validationsForm.errors.map { error =>
+          <li>@error.message</li>
+        }
+      </ul>
+    </div>
+  }
+
+	@helper.form(action = routes.ValidationsController.save) {
+	
+    @* demonstrates a textfield, label, and placeholder text *@
+    @inputText(validationsForm("username"), '_label -> "Username", 'placeholder -> "Username")	
+
+    @* you can use placeholders on these fields as well *@
+    @inputText(validationsForm("firstName"), '_label -> "First Name")  
+    @inputText(validationsForm("number"), '_label -> "Number")
+    @inputText(validationsForm("score"), '_label -> "Score", '_help -> "The score, from 1 to 100")
+    @inputText(validationsForm("host"), '_label -> "Host")  
+    @inputText(validationsForm("age"), '_label -> "Age", '_help -> "Enter your age, if you'd like")
+    @textarea(validationsForm("notes"), '_label -> "Notes", '_help -> "Any notes you want to add")
+
+    <div class="form-actions actions">
+      <input type="submit" class="btn btn-primary" value="Save">
+      <a href="@routes.Application.index" class="btn">Cancel</a>
+    </div>
+
+  }
+
+
+}
+
